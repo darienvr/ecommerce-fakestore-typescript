@@ -1,24 +1,22 @@
+import GridView from "./GridView"
+import ListView from "./ListView"
 import { useContext } from 'react'
-import Product from './Product'
-import Sort from './Sort'
 import { AppContext } from '../context/products_context'
 import { ProductContextType } from '../types'
 
+
 const ProductList = () => {
 
-    const { filterProducts} = useContext(AppContext) as ProductContextType
+    const { gridView } = useContext(AppContext) as ProductContextType
+
+    if(gridView === false){
+        return(
+                <ListView />
+        )
+    }
 
   return (
-    <>
-        <Sort length = {filterProducts.length} />
-        <div className='product-list-container'>
-            {filterProducts.map((item)=>{
-                return(
-                    <Product key={item.id} {...item} />
-                )
-            })}
-        </div>
-    </>
+    <GridView />
   )
 }
 

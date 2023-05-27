@@ -21,6 +21,9 @@ export type ProductContextType = {
     inputText: string;
     filterCategory: (i: CharacterAPIInfo['category'])=>void;
     handleInput: (i:React.ChangeEvent<HTMLInputElement>)=>void;
+    gridView: boolean;
+    changeGridView: ()=>void;
+    changeListView: ()=>void;
 }
 
 export type CartContextType = {

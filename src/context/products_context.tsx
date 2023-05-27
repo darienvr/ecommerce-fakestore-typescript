@@ -12,6 +12,7 @@ const AppProvider = ({children}: Props) => {
     const [products, setProducts] = useState<CharacterAPIInfo[]>([])
     const [filterProducts, setFilterProducts] = useState<CharacterAPIInfo[]>([])
     const [inputText, setInputText] = useState('')
+    const [gridView, setGridView] = useState(true)
 
     const fetchData = async() => {
         const response = await fetch('https://fakestoreapi.com/products')
@@ -36,6 +37,14 @@ const AppProvider = ({children}: Props) => {
         setFilterProducts(newProducts)
     }
 
+    const changeGridView = () => {
+        setGridView(true)
+    }
+
+    const changeListView = () => {
+        setGridView(false)
+    }
+
     useEffect(()=>{
         fetchData()
     },[])
@@ -48,6 +57,9 @@ const AppProvider = ({children}: Props) => {
             inputText,
             filterCategory,
             handleInput,
+            gridView,
+            changeGridView,
+            changeListView,
         }}>
             {children}
         </AppContext.Provider>

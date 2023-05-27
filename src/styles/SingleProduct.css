@@ -33,6 +33,7 @@
 .amount-btn button {
     font-size: 2rem;
     border: none;
+    background-color: transparent;
 }
 
 .amount-btn div {
