@@ -8,12 +8,13 @@ interface Props {
 
 const BtnCategory = ({category}: Props) => {
 
-  const { filterCategory } = useContext(AppContext) as ProductContextType
+  const { filterCategory, categorySelect } = useContext(AppContext) as ProductContextType
 
   return (
     <button
       onClick={()=>filterCategory(category)} 
-      className="btn-categories">{category}
+      className={`${category === categorySelect ? 'btn-categories active' : 'btn-categories'}`}>
+      {category}
     </button>
   )
 }

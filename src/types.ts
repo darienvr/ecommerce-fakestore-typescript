@@ -24,6 +24,7 @@ export type ProductContextType = {
     gridView: boolean;
     changeGridView: ()=>void;
     changeListView: ()=>void;
+    categorySelect: string;
 }
 
 export type CartContextType = {

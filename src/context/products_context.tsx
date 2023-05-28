@@ -13,6 +13,7 @@ const AppProvider = ({children}: Props) => {
     const [filterProducts, setFilterProducts] = useState<CharacterAPIInfo[]>([])
     const [inputText, setInputText] = useState('')
     const [gridView, setGridView] = useState(true)
+    const [categorySelect, setCategorySelect] = useState('All')
 
     const fetchData = async() => {
         const response = await fetch('https://fakestoreapi.com/products')
@@ -31,10 +32,12 @@ const AppProvider = ({children}: Props) => {
 
     const filterCategory = (category: CharacterAPIInfo['category']) => {
         if(category === 'All'){
+            setCategorySelect(category)
             return setFilterProducts(products)
         }
         const newProducts = products.filter(item=>item.category === category)
         setFilterProducts(newProducts)
+        setCategorySelect(category)
     }
 
     const changeGridView = () => {
@@ -60,6 +63,7 @@ const AppProvider = ({children}: Props) => {
             gridView,
             changeGridView,
             changeListView,
+            categorySelect,
         }}>
             {children}
         </AppContext.Provider>

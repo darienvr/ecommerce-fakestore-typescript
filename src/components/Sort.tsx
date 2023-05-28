@@ -8,12 +8,12 @@ import { FaList } from 'react-icons/fa';
 
 const Sort = () => {
 
-  const { filterProducts, changeGridView, changeListView} = useContext(AppContext) as ProductContextType
+  const { filterProducts, changeGridView, changeListView, gridView} = useContext(AppContext) as ProductContextType
 
   return (
     <div className="sort-container"> 
-        <button onClick={changeGridView} className='btn-sort'><BsGridFill /></button>
-        <button onClick={changeListView} className='btn-sort'><FaList /></button>
+        <button onClick={changeGridView} className={`${ gridView ? 'btn-sort active' : 'btn-sort'}`}><BsGridFill /></button>
+        <button onClick={changeListView} className={`${ !gridView ? 'btn-sort active' : 'btn-sort'}`}><FaList /></button>
         <div>{filterProducts.length} Products found</div>
     </div>
   )
