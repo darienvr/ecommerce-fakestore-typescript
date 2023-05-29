@@ -10,7 +10,7 @@ interface Props {
 
 const AddToCart = ({product}:Props) => {
 
-    const { addToCart } = useContext(CartContext) as CartContextType
+    const { addToCart, openSidebar } = useContext(CartContext) as CartContextType
 
     const [amount, setAmount] = useState(1)
 
@@ -27,7 +27,11 @@ const AddToCart = ({product}:Props) => {
   return (
     <div>
         <AmountBtn increase={handleIncrease} decrease={handleDecrease} amount={amount}/>
-        <button onClick={()=>addToCart(product, amount)} className='btn btn-primary'>Add To Cart</button>
+        <button 
+          onClick={()=>{
+            addToCart(product, amount)
+          }} 
+          className='btn btn-primary'>Add To Cart</button>
     </div>
   )
 }

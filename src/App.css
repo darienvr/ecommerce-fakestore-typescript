@@ -95,6 +95,13 @@
   padding: 10px;
 }
 
+.cart-length {
+  background-color: #232323;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .cart-btn-close {
   color: rgb(160, 18, 18);
   font-weight: bold;
@@ -138,5 +145,20 @@
 .cart-item-btn-delete {
   border: none;
   background-color: transparent;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.cart-total-btn {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+  width: 200px;
+  
 }
 

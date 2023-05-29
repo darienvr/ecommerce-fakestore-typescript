@@ -26,7 +26,7 @@ const SingleProduct = () => {
                     <img src={singleProduct.image}/>
                     <div className='single-product-header'>
                         <h2>{singleProduct.title}</h2>
-                        <h5>S./ {singleProduct.price}</h5>
+                        <h5>S/. {singleProduct.price}</h5>
                         <p>{singleProduct.description}</p>
                         <AddToCart product={singleProduct}/>
                     </div>

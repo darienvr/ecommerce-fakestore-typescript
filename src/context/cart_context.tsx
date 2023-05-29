@@ -24,6 +24,7 @@ const CartProvider = ({children}: Props) => {
                 return [...item, {...product, quantity: quantity}]
             }
         })
+        setIsSidebarOpen(true)
     }
 
     const openSidebar = () => {
