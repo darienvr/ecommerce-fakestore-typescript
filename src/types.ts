@@ -25,6 +25,8 @@ export type ProductContextType = {
     changeGridView: ()=>void;
     changeListView: ()=>void;
     categorySelect: string;
+    sort: string;
+    updateSort: (i:React.ChangeEvent<HTMLSelectElement>)=>void;
 }
 
 export type CartContextType = {
