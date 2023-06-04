@@ -11,6 +11,7 @@ const AppProvider = ({children}: Props) => {
 
     const [products, setProducts] = useState<CharacterAPIInfo[]>([])
     const [filterProducts, setFilterProducts] = useState<CharacterAPIInfo[]>([])
+    const [tempFilter, setTempFilter] = useState<CharacterAPIInfo[]>([])
     const [inputText, setInputText] = useState('')
     const [gridView, setGridView] = useState(true)
     const [categorySelect, setCategorySelect] = useState('All')
@@ -23,12 +24,13 @@ const AppProvider = ({children}: Props) => {
         const data = await response.json()
         setProducts(data)
         setFilterProducts(data)
+        setTempFilter(data)
     }
 
     const AllCategories = ['All', ...new Set(products.map((item)=>item.category))]
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const search = products.filter(item => item.title.toLocaleLowerCase().includes(e.target.value))
+        const search = tempFilter.filter(item => item.title.toLocaleLowerCase().includes(e.target.value))
         setInputText(e.target.value)
         setFilterProducts(search)
     }
@@ -36,10 +38,12 @@ const AppProvider = ({children}: Props) => {
     const filterCategory = (category: CharacterAPIInfo['category']) => {
         if(category === 'All'){
             setCategorySelect(category)
+            setTempFilter(products)
             return setFilterProducts(products)
         }
         const newProducts = products.filter(item=>item.category === category)
         setFilterProducts(newProducts)
+        setTempFilter(newProducts)
         setCategorySelect(category)
     }
 
@@ -50,7 +54,7 @@ const AppProvider = ({children}: Props) => {
 
     const filterPrice = () => {
         if(filterProducts.length > 0){
-            const prices = filterProducts.map(item=>item.price)
+            const prices = tempFilter.map(item=>item.price)
             const maxPrice = Math.max(...prices);
             setPrice(maxPrice)
             setMaxPrice(maxPrice)  
@@ -94,6 +98,12 @@ const AppProvider = ({children}: Props) => {
         setFilterProducts([...tempProduct])
     }
 
+    const handleClear = () => {
+        setTempFilter(products)
+        setCategorySelect(AllCategories[0])
+        filterPrice()
+    }
+
     useEffect(()=>{
         fetchData()
     },[])
@@ -107,9 +117,9 @@ const AppProvider = ({children}: Props) => {
     }, [sort])
 
     useEffect(()=>{
-        const tempProduct = products.filter(item=>item.price <= price)
+        const tempProduct = tempFilter.filter(item=>item.price <= price)
         setFilterProducts([...tempProduct])
-    },[price])
+    },[price, categorySelect])
 
     return(
         <AppContext.Provider value={{
@@ -128,7 +138,8 @@ const AppProvider = ({children}: Props) => {
             filterPrice,
             price,
             maxPrice,
-            changePriceFilter
+            changePriceFilter,
+            handleClear
         }}>
             {children}
         </AppContext.Provider>

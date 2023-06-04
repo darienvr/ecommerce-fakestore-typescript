@@ -5,7 +5,7 @@ import { ProductContextType } from '../types'
 
 const Filter = () => {
 
-  const { AllCategories, inputText, handleInput, changePriceFilter, price, maxPrice } = useContext(AppContext) as ProductContextType
+  const { AllCategories, inputText, handleInput, changePriceFilter, price, maxPrice, handleClear } = useContext(AppContext) as ProductContextType
 
   return (
     <div className="filter-container">
@@ -23,7 +23,7 @@ const Filter = () => {
         <p>S./ {price}</p>
         <input type='range' min='0' max={maxPrice} value={price.toFixed(2)} step="0.01" onChange={changePriceFilter}/>
       </div>
-      <button className="btn btn-danger">Clear Filters</button>
+      <button className="btn btn-danger" onClick={handleClear}>Clear Filters</button>
     </div>
   )
 }

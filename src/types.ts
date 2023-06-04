@@ -31,6 +31,7 @@ export type ProductContextType = {
     price: number;
     maxPrice: number;
     changePriceFilter: (i:React.ChangeEvent<HTMLInputElement>)=>void;
+    handleClear: ()=>void;
 }
 
 export type CartContextType = {
