@@ -27,6 +27,10 @@ export type ProductContextType = {
     categorySelect: string;
     sort: string;
     updateSort: (i:React.ChangeEvent<HTMLSelectElement>)=>void;
+    filterPrice: (i: React.ChangeEvent<HTMLInputElement>)=>void;
+    price: number;
+    maxPrice: number;
+    changePriceFilter: (i:React.ChangeEvent<HTMLInputElement>)=>void;
 }
 
 export type CartContextType = {

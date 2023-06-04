@@ -15,6 +15,8 @@ const AppProvider = ({children}: Props) => {
     const [gridView, setGridView] = useState(true)
     const [categorySelect, setCategorySelect] = useState('All')
     const [sort, setSort] = useState('')
+    const [maxPrice, setMaxPrice] = useState(0)
+    const [price, setPrice] = useState(0)
 
     const fetchData = async() => {
         const response = await fetch('https://fakestoreapi.com/products')
@@ -39,6 +41,20 @@ const AppProvider = ({children}: Props) => {
         const newProducts = products.filter(item=>item.category === category)
         setFilterProducts(newProducts)
         setCategorySelect(category)
+    }
+
+    const changePriceFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(e.target.value)
+        setPrice(value)
+    }
+
+    const filterPrice = () => {
+        if(filterProducts.length > 0){
+            const prices = filterProducts.map(item=>item.price)
+            const maxPrice = Math.max(...prices);
+            setPrice(maxPrice)
+            setMaxPrice(maxPrice)  
+        }
     }
 
     const changeGridView = () => {
@@ -83,8 +99,17 @@ const AppProvider = ({children}: Props) => {
     },[])
 
     useEffect(()=>{
+        filterPrice()
+    },[products])
+
+    useEffect(()=>{
         sortProducts()
-    }, [sort, categorySelect])
+    }, [sort])
+
+    useEffect(()=>{
+        const tempProduct = products.filter(item=>item.price <= price)
+        setFilterProducts([...tempProduct])
+    },[price])
 
     return(
         <AppContext.Provider value={{
@@ -100,6 +125,10 @@ const AppProvider = ({children}: Props) => {
             categorySelect,
             sort,
             updateSort,
+            filterPrice,
+            price,
+            maxPrice,
+            changePriceFilter
         }}>
             {children}
         </AppContext.Provider>
