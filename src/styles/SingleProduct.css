@@ -40,3 +40,16 @@
     font-size: 2.5rem;
     font-weight: bold;
 }
+
+.btn-add-cart {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.spinner {
+    contain: cover;
+}

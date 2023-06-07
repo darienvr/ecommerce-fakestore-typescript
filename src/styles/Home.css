@@ -1,4 +1,10 @@
 
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .product-grid-container {
     padding: 20px 0;
     display: grid;

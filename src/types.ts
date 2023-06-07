@@ -36,8 +36,10 @@ export type ProductContextType = {
 
 export type CartContextType = {
     cart: CharacterAPIInfo[];
-    addToCart: (i:CharacterAPIInfo, e:number)=>void
+    addToCart: (i:CharacterAPIInfo, e:number)=>void;
     openSidebar: ()=>void;
     isSidebarOpen: boolean;
-    deleteItem: (i:CharacterAPIInfo['id'])=>void
+    deleteItem: (i:CharacterAPIInfo['id'])=>void;
+    decreaseAmount: (id: CharacterAPIInfo['id'])=>void;
+    increaseAmount: (id: CharacterAPIInfo['id'])=>void;
 }

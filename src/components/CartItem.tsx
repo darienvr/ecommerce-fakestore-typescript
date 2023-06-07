@@ -14,15 +14,15 @@ interface Props {
 
 const CartItem = ( {id, title, image, price, quantity}:Props ) => {
 
-    const { deleteItem } = useContext(CartContext) as CartContextType
+    const { deleteItem, increaseAmount, decreaseAmount } = useContext(CartContext) as CartContextType
 
-    const handleIncrease = () => {
-        console.log('increase')
-      }
-    
-      const handleDecrease = () => {
-        console.log('decrease')
-      }
+    const increase = () => {
+      increaseAmount(id)
+    }
+
+    const decrease = () => {
+      decreaseAmount(id)
+    }
 
   return (
         <div className='cart-item'>
@@ -33,7 +33,7 @@ const CartItem = ( {id, title, image, price, quantity}:Props ) => {
               <h6>{title}</h6>
               <div className='cart-item-amount'>
                 <p>S./ {price}</p>
-                <AmountBtn amount={quantity} increase={handleIncrease} decrease={handleDecrease}/>
+                <AmountBtn amount={quantity} increase={increase} decrease={decrease}/>
               </div>
         </div>
   )

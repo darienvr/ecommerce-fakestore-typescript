@@ -16,8 +16,10 @@ const CartProvider = ({children}: Props) => {
         setCart(item=>{
             const tempItem = item.find(i=>i.id === product.id)
             if(tempItem){
+                const newQuantity = tempItem.quantity + quantity;
+                const updatedQuantity = newQuantity > 9 ? 9 : newQuantity;
                 return item.map(i=>i.id === product.id 
-                    ? {...i, quantity: i.quantity + quantity}
+                    ? {...i, quantity: updatedQuantity} 
                     : i
                 );
             }else{
@@ -36,6 +38,30 @@ const CartProvider = ({children}: Props) => {
         setCart(tempCart)
     }
 
+    const increaseAmount = (id: CharacterAPIInfo['id']) => {
+        const tempCart = cart.map(item=>{
+            if(item.id === id){
+                let newQuantity = item.quantity+1
+                if(newQuantity>9) newQuantity=9
+                return {...item, quantity: newQuantity}
+            }
+            return item
+        })
+        setCart(tempCart)
+    }
+
+    const decreaseAmount = (id: CharacterAPIInfo['id']) => {
+        const tempCart = cart.map(item=>{
+            if(item.id === id){
+                let newQuantity = item.quantity-1
+                if(newQuantity<1) newQuantity=1
+                return {...item, quantity: newQuantity}
+            }
+            return item
+        })
+        setCart(tempCart)
+    }
+
     return(
         <CartContext.Provider value={{
             addToCart,
@@ -43,6 +69,8 @@ const CartProvider = ({children}: Props) => {
             openSidebar,
             isSidebarOpen,
             deleteItem,
+            increaseAmount,
+            decreaseAmount,
         }}>
             {children}
         </CartContext.Provider>

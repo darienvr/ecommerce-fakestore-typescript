@@ -1,13 +1,19 @@
+import { useContext } from 'react'
 import Filter from '../components/Filter'
 import Sort from '../components/Sort'
 import ProductList from '../components/ProductList'
 import '../styles/Home.css'
+import { AppContext } from '../context/products_context'
+import { ProductContextType } from '../types'
 
 
 const Home = () => {
 
-  return (
-    <div className='container'>
+  const { products } = useContext(AppContext) as ProductContextType
+
+  if(products.length > 0){
+    return(
+      <div className='container'>
         <div className='row'>
             <div className='col-3'>
                 <Filter />
@@ -17,6 +23,15 @@ const Home = () => {
                 <ProductList />
             </div>
         </div>
+    </div>
+    )
+  }
+
+  return (
+    <div className='spinner'>
+      <div className="spinner-border text-secondary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
     </div>
   )
 }

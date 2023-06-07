@@ -37,7 +37,11 @@ const SingleProduct = () => {
             </>
         )    
     }else{
-        return <h1>Loading</h1>
+        return <div className='spinner'>
+            <div className="spinner-border text-secondary" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
     }
 }
 
