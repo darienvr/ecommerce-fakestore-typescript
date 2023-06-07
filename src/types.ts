@@ -17,7 +17,7 @@ export interface Rating {
 export type ProductContextType = {
     products: CharacterAPIInfo[];
     filterProducts: CharacterAPIInfo[];
-    AllCategories: string[];
+    allCategories: string[];
     inputText: string;
     filterCategory: (i: CharacterAPIInfo['category'])=>void;
     handleInput: (i:React.ChangeEvent<HTMLInputElement>)=>void;

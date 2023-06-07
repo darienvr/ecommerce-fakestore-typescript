@@ -5,14 +5,14 @@ import { ProductContextType } from '../types'
 
 const Filter = () => {
 
-  const { AllCategories, inputText, handleInput, changePriceFilter, price, maxPrice, handleClear } = useContext(AppContext) as ProductContextType
+  const { allCategories, inputText, handleInput, changePriceFilter, price, maxPrice, handleClear } = useContext(AppContext) as ProductContextType
 
   return (
     <div className="filter-container">
       <input value={inputText} className="filter-input" placeholder="Search" onChange={handleInput}/>
       <div className="categories-container">
         <h5>Category</h5>
-        {AllCategories.map((item, index)=>{
+        {allCategories.map((item, index)=>{
           return(
             <BtnCategory key={index} category={item}/>
           )

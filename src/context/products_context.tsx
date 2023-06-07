@@ -18,6 +18,7 @@ const AppProvider = ({children}: Props) => {
     const [sort, setSort] = useState('')
     const [maxPrice, setMaxPrice] = useState(0)
     const [price, setPrice] = useState(0)
+    const [allCategories, setAllCategories] = useState<string[]>([])
 
     const fetchData = async() => {
         const response = await fetch('https://fakestoreapi.com/products')
@@ -26,8 +27,6 @@ const AppProvider = ({children}: Props) => {
         setFilterProducts(data)
         setTempFilter(data)
     }
-
-    const AllCategories = ['All', ...new Set(products.map((item)=>item.category))]
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const search = tempFilter.filter(item => item.title.toLocaleLowerCase().includes(e.target.value))
@@ -53,8 +52,8 @@ const AppProvider = ({children}: Props) => {
     }
 
     const filterPrice = () => {
-        if(filterProducts.length > 0){
-            const prices = tempFilter.map(item=>item.price)
+        if(products.length > 0){
+            const prices = products.map(item=>item.price)
             const maxPrice = Math.max(...prices);
             setPrice(maxPrice)
             setMaxPrice(maxPrice)  
@@ -76,22 +75,22 @@ const AppProvider = ({children}: Props) => {
     const sortProducts = () => {
         let tempProduct:CharacterAPIInfo[] = []
         if(sort === 'price-lowest'){
-            tempProduct = filterProducts.sort((a,b)=>{
+            tempProduct = tempFilter.sort((a,b)=>{
                 return a.price - b.price
             })   
         }
         if(sort === 'price-highest'){
-            tempProduct = filterProducts.sort((a,b)=>{
+            tempProduct = tempFilter.sort((a,b)=>{
                 return b.price - a.price
             })  
         }
         if(sort === 'name-a'){
-            tempProduct = filterProducts.sort((a,b)=>{
+            tempProduct = tempFilter.sort((a,b)=>{
                 return a.title.localeCompare(b.title)
             })  
         }
         if(sort === 'name-z'){
-            tempProduct = filterProducts.sort((a,b)=>{
+            tempProduct = tempFilter.sort((a,b)=>{
                 return b.title.localeCompare(a.title)
             })  
         }
@@ -100,7 +99,8 @@ const AppProvider = ({children}: Props) => {
 
     const handleClear = () => {
         setTempFilter(products)
-        setCategorySelect(AllCategories[0])
+        setFilterProducts(products)
+        setCategorySelect(allCategories[0])
         filterPrice()
     }
 
@@ -109,12 +109,13 @@ const AppProvider = ({children}: Props) => {
     },[])
 
     useEffect(()=>{
+        setAllCategories(['All', ...new Set(products.map((item)=>item.category))])
         filterPrice()
     },[products])
 
     useEffect(()=>{
         sortProducts()
-    }, [sort])
+    }, [sort, categorySelect])
 
     useEffect(()=>{
         const tempProduct = tempFilter.filter(item=>item.price <= price)
@@ -125,7 +126,7 @@ const AppProvider = ({children}: Props) => {
         <AppContext.Provider value={{
             products,
             filterProducts,
-            AllCategories,
+            allCategories,
             inputText,
             filterCategory,
             handleInput,
