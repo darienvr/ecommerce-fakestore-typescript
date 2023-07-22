@@ -1,9 +1,11 @@
-import { useState, useContext, createContext, ReactNode} from "react";
+import { useState, useContext, createContext, ReactNode, useEffect} from "react";
 import type { CharacterAPIInfo } from '../types'
 
 interface Props {
     children: ReactNode;
 }
+
+const CART_STORAGE_KEY = "cart";
 
 const CartContext = createContext({})
 
@@ -11,6 +13,20 @@ const CartProvider = ({children}: Props) => {
 
     const [cart, setCart] = useState<CharacterAPIInfo[]>([])
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [loaded, setLoaded] = useState<boolean>(false);
+
+    useEffect(() => {
+        const savedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)|| '[]');
+        setCart(savedCart); 
+        setLoaded(true);
+      }, []);
+    
+      useEffect(() => {
+        if(loaded){
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+        }
+        
+      }, [cart, loaded]);
 
     const addToCart = (product:CharacterAPIInfo, quantity: number) => {
         setCart(item=>{
