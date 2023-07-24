@@ -20,7 +20,7 @@ const ListView = () => {
                             <h6>{item.title}</h6>
                             <p>S./{item.price}</p>
                             <p>{item.description.substring(0, 150)}...</p>
-                            <Link to={`product/${item.id}`}>
+                            <Link to={`/product/${item.id}`}>
                                 <button className="btn btn-warning btn-details">Details</button>
                             </Link>
                         </div>
