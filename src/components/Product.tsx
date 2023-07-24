@@ -19,7 +19,7 @@ const Product = ( {id, title, image, price}: Props ) => {
               <h6>{title}</h6>
               <p>S./{price}</p>
           </div>
-          <Link to={`product/${id}`}>
+          <Link to={`/ecommerce-fakestore-typescript/product/${id}`}>
             <button className="btn btn-warning btn-details">Details</button>
           </Link>
         </div>

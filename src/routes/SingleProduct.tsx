@@ -31,7 +31,7 @@ const SingleProduct = () => {
                         <AddToCart product={singleProduct}/>
                     </div>
                 </div>
-                <Link to={'/'}>
+                <Link to={'/ecommerce-fakestore-typescript/'}>
                     <button className='btn btn-warning'>Back To Product</button>
                 </Link>
             </>

@@ -10,15 +10,15 @@ import Navbar from './components/Navbar.tsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/ecommerce-fakestore-typescript/",
     element: <Navbar />,
     children: [
       {
-        path: "/",
+        path: "/ecommerce-fakestore-typescript/",
         element: <Home />
       },
       {
-        path: "/product/:id",
+        path: "/ecommerce-fakestore-typescript/product/:id",
         element: <SingleProduct />
       },
     ]
