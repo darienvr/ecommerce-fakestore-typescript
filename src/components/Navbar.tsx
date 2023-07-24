@@ -10,7 +10,7 @@ import { Sidebar } from "./Sidebar";
 
 const Navbar = () => {
 
-  const { cart, openSidebar } = useContext(CartContext) as CartContextType
+  const { cart, openSidebar, totalQuantity } = useContext(CartContext) as CartContextType
 
   return (
     <>
@@ -30,7 +30,7 @@ const Navbar = () => {
                   <div style={{color: '#fff'}}>Cart</div>
                   <BsFillCartFill style={{color: '#fff'}} />
                 </button>
-                <span className='cart-quantity'>{cart.length}</span>
+                <span className='cart-quantity'>{totalQuantity}</span>
               </div>
           </div>
         </section>

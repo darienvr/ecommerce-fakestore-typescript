@@ -42,4 +42,5 @@ export type CartContextType = {
     deleteItem: (i:CharacterAPIInfo['id'])=>void;
     decreaseAmount: (id: CharacterAPIInfo['id'])=>void;
     increaseAmount: (id: CharacterAPIInfo['id'])=>void;
+    totalQuantity: number;
 }

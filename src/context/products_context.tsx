@@ -98,6 +98,7 @@ const AppProvider = ({children}: Props) => {
     }
 
     const handleClear = () => {
+        setInputText('')
         setTempFilter(products)
         setFilterProducts(products)
         setCategorySelect(allCategories[0])
@@ -121,6 +122,7 @@ const AppProvider = ({children}: Props) => {
         const tempProduct = tempFilter.filter(item=>item.price <= price)
         setFilterProducts([...tempProduct])
     },[price, categorySelect])
+    
 
     return(
         <AppContext.Provider value={{

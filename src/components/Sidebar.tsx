@@ -5,11 +5,17 @@ import CartItem from './CartItem';
 
 export const Sidebar = () => {
 
-    const { openSidebar, isSidebarOpen, cart } = useContext(CartContext) as CartContextType
+    const { openSidebar, isSidebarOpen, cart, totalQuantity } = useContext(CartContext) as CartContextType
 
     const totalPrice = cart.reduce((acc, item) => {
       return acc + item.price*item.quantity
     }, 0)
+
+    
+
+    const handleCheckOut = () => {
+      alert('¡Función de pago en desarrollo! Esta característica estará disponible próximamente. Gracias por su comprensión y paciencia.')
+    }
 
     if(cart.length < 1){
       return(
@@ -25,7 +31,7 @@ export const Sidebar = () => {
   return (
     <div className={`${ isSidebarOpen ? 'sidebar show' : 'sidebar'}`}>
         <div className='siderbar-header'>
-          <h3>Shopping <span className='cart-length'>{cart.length}</span> items</h3>
+          <h3>Shopping <span className='cart-length'>{totalQuantity}</span> items</h3>
           <button className='cart-btn-close' onClick={openSidebar}>X</button>
         </div>
         {cart.map((item)=>{
@@ -35,9 +41,9 @@ export const Sidebar = () => {
         })}
         <div className='cart-total'>
           <h5>Total: </h5>
-          <h3>S/. {totalPrice.toFixed(2)}</h3>
+          <h3>S./ {totalPrice.toFixed(2)}</h3>
         </div>
-        <button className='btn btn-primary cart-total-btn'>Check Out</button>
+        <button className='btn btn-primary cart-total-btn' onClick={handleCheckOut}>Proceed To Checkout</button>
     </div>
   )
 }

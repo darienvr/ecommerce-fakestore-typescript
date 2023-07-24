@@ -19,14 +19,16 @@ const CartProvider = ({children}: Props) => {
         const savedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY)|| '[]');
         setCart(savedCart); 
         setLoaded(true);
-      }, []);
+    }, []);
     
       useEffect(() => {
         if(loaded){
             localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
         }
         
-      }, [cart, loaded]);
+    }, [cart, loaded]);
+
+    const totalQuantity = cart.reduce((acc, item)=>acc + item.quantity, 0);
 
     const addToCart = (product:CharacterAPIInfo, quantity: number) => {
         setCart(item=>{
@@ -87,6 +89,7 @@ const CartProvider = ({children}: Props) => {
             deleteItem,
             increaseAmount,
             decreaseAmount,
+            totalQuantity
         }}>
             {children}
         </CartContext.Provider>
