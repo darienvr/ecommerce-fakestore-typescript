@@ -41,7 +41,7 @@ export const Sidebar = () => {
         })}
         <div className='cart-total'>
           <h5>Total: </h5>
-          <h3>S./ {totalPrice.toFixed(2)}</h3>
+          <h3>S/ {totalPrice.toFixed(2)}</h3>
         </div>
         <button className='btn btn-primary cart-total-btn' onClick={handleCheckOut}>Proceed To Checkout</button>
     </div>
