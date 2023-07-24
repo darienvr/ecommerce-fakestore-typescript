@@ -10,7 +10,7 @@ import { Sidebar } from "./Sidebar";
 
 const Navbar = () => {
 
-  const { cart, openSidebar, totalQuantity } = useContext(CartContext) as CartContextType
+  const { openSidebar, totalQuantity } = useContext(CartContext) as CartContextType
 
   return (
     <>
