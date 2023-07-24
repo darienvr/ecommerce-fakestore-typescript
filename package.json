@@ -1,5 +1,6 @@
 {
   "name": "fakestore-ts-stripe",
+  "homepage": "https://darienvr.github.io/ecommerce-fakestore-typescript/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
