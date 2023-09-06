@@ -15,15 +15,15 @@ const Home = () => {
     return(
       <div className='container'>
         <div className='row'>
-            <div className='col-3'>
+            <div className='col-md-3'>
                 <Filter />
             </div>
-            <div className='col-9'>
+            <div className='col-md-9'>
                 <Sort />
                 <ProductList />
             </div>
         </div>
-    </div>
+      </div>
     )
   }
 
