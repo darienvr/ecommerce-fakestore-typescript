@@ -25,12 +25,12 @@ const Navbar = () => {
                 <div style={{color: '#fff'}}>Login</div>
                 <FaUserAlt style={{color: '#fff'}}/>
               </button>
-              <div>
+              <div className="btn-cart-container">
                 <button className='btn-navbar' onClick={openSidebar}>
                   <div style={{color: '#fff'}}>Cart</div>
                   <BsFillCartFill style={{color: '#fff'}} />
+                  <span className='cart-quantity'>{totalQuantity}</span>
                 </button>
-                <span className='cart-quantity'>{totalQuantity}</span>
               </div>
           </div>
         </section>
