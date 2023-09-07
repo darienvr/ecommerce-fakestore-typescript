@@ -200,5 +200,10 @@
     width: 20px;
     font-size: 0.8rem;
   }
+
+  .sidebar {
+    width: 90%;
+    z-index: 10;
+  }
 }
 
