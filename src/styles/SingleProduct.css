@@ -1,7 +1,8 @@
 .single-product-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 1000px;
+    width: 70%;
+    gap: 20px;
     min-height: 450px;
     margin: 10px auto;
     padding: 20px;
@@ -53,3 +54,23 @@
 .spinner {
     contain: cover;
 }
+
+.btn-back {
+    margin: 30px 10%;
+}
+
+
+@media (max-width: 1023px) {
+    .single-product-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .single-product-container img {
+        margin: 0 auto;
+        width: 90%;
+        height: auto;
+    }
+
+  }

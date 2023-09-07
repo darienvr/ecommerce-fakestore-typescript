@@ -31,9 +31,11 @@ const SingleProduct = () => {
                         <AddToCart product={singleProduct}/>
                     </div>
                 </div>
-                <Link to='/'>
-                    <button className='btn btn-warning'>Back To Product</button>
-                </Link>
+                <div>
+                    <Link to='/'>
+                        <button className='btn btn-warning btn-back'>Back To Product</button>
+                    </Link>
+                </div>
             </>
         )    
     }else{
