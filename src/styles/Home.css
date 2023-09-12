@@ -26,7 +26,12 @@
     margin: 10px;
     padding: 20px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .3), 0 2px 4px -1px rgba(0, 0, 0, .06);
+    transition: transform .5s;
 }
+
+.product-list-view:hover, .product:hover {
+    transform: scale(1.01);
+}   
 
 .product {
     padding: 10px;   
@@ -34,18 +39,26 @@
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .3), 0 2px 4px -1px rgba(0, 0, 0, .06);
+    transition: transform .5s;
 }
 
 .product-image-container {
     background-color: #fff;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .product-image {
     width: 180px;
     height: 180px;
     margin: 0 auto;
+    transform: scale(1.05);
+    transition: transform 0.5s;
+}
+
+.product-image:hover{
+    transform: scale(1);
 }
 
 .product-header {
