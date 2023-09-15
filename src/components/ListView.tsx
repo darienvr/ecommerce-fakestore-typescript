@@ -12,7 +12,7 @@ const ListView = () => {
         <div className='product-list-container'>
             {filterProducts.map((item)=>{
                 return(
-                    <div className="product-list-view">
+                    <div className="product-list-view" key={item.id}>
                         <div className="product-image-container">
                             <img src={item.image} className="product-image"/>
                         </div>
