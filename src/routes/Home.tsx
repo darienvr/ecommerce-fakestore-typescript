@@ -9,7 +9,7 @@ import { ProductContextType } from '../types'
 
 const Home = () => {
 
-  const { products } = useContext(AppContext) as ProductContextType
+  const { products, filterProducts } = useContext(AppContext) as ProductContextType
 
   if(products.length > 0){
     return(
@@ -20,7 +20,10 @@ const Home = () => {
             </div>
             <div className='col-md-9'>
                 <Sort />
-                <ProductList />
+                {filterProducts.length === 0 
+                  ? <h4 className='message-no-products'>Sorry, no products matched your search.</h4> 
+                  : <ProductList />
+                }
             </div>
         </div>
       </div>
