@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { CartContextType } from '../types'
 import { CartContext } from '../context/cart_context';
 import CartItem from './CartItem';
+import cartEmpty from '../assets/cart-empty.png'
 
 export const Sidebar = () => {
 
@@ -24,6 +25,9 @@ export const Sidebar = () => {
           <h3>Your cart is empty</h3>
           <button className='cart-btn-close' onClick={openSidebar}>X</button>
         </div>
+          <div className='sidebar-img-container'>
+            <img className='sidebar-img' src={cartEmpty} alt="Imagen de carrito de compras vacio" />
+          </div>
         </div>
       )
     }
