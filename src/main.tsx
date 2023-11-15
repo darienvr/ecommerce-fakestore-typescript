@@ -7,6 +7,7 @@ import { RouterProvider, createHashRouter } from 'react-router-dom'
 import Home from './routes/Home.tsx'
 import SingleProduct from './routes/SingleProduct.tsx'
 import Navbar from './components/Navbar.tsx'
+import NotFound from './routes/NotFound.tsx'
 
 
 const router = createHashRouter([
@@ -21,6 +22,10 @@ const router = createHashRouter([
       {
         path: "/product/:id",
         element: <SingleProduct />
+      },
+      {
+        path: "*",
+        element: <NotFound />
       },
     ]
   },
