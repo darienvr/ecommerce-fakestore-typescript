@@ -31,9 +31,9 @@ const SingleProduct = () => {
                         <AddToCart product={singleProduct}/>
                     </div>
                 </div>
-                <div>
-                    <Link to='/'>
-                        <button className='btn btn-warning btn-back'>Back To Product</button>
+                <div className='container-btn-back'>
+                    <Link to='/' className='btn btn-warning btn-back'>
+                        Back To Product
                     </Link>
                 </div>
             </>

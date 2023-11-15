@@ -15,6 +15,7 @@
     max-width: 400px;
     height: 500px;
     object-fit: contain;
+    margin: 0 auto;
 }
 
 .single-product-header {
@@ -56,7 +57,12 @@
 }
 
 .btn-back {
-    margin: 30px 10%;
+    font-weight: 550;
+}
+
+.container-btn-back {
+    display: grid;
+    place-content: center;
 }
 
 
